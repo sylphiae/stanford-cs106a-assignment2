@@ -27,6 +27,19 @@ public class Pyramid extends GraphicsProgram {
 	
 	public void run() {
 		/* You fill this in. */
+		int offset = (getWidth()-14*30)/2;
+		GRect brick = new GRect(offset, getHeight()-12, 30, 12);
+		add(brick);
+
+		for (int i = 1; i < 14; i ++) {
+			brick = new GRect(offset(i), getHeight()-12, 30, 12);
+			add(brick);
+		}
+	}
+
+	public int offset(int numberOfBricks){
+		int initialOffset = (getWidth()-14*30)/2;
+		return initialOffset + 30 * numberOfBricks;
 	}
 }
 
