@@ -12,34 +12,46 @@
 
 import acm.graphics.*;
 import acm.program.*;
-import java.awt.*;
 
 public class Pyramid extends GraphicsProgram {
 
-/** Width of each brick in pixels */
-	private static final int BRICK_WIDTH = 30;
+    /**
+     * Width of each brick in pixels
+     */
+    private static final int BRICK_WIDTH = 30;
 
-/** Width of each brick in pixels */
-	private static final int BRICK_HEIGHT = 12;
+    /**
+     * Width of each brick in pixels
+     */
+    private static final int BRICK_HEIGHT = 12;
 
-/** Number of bricks in the base of the pyramid */
-	private static final int BRICKS_IN_BASE = 14;
-	
-	public void run() {
-		/* You fill this in. */
-		int offset = (getWidth()-14*30)/2;
-		GRect brick = new GRect(offset, getHeight()-12, 30, 12);
-		add(brick);
+    /**
+     * Number of bricks in the base of the pyramid
+     */
+    private static final int BRICKS_IN_BASE = 14;
 
-		for (int i = 1; i < 14; i ++) {
-			brick = new GRect(offset(i), getHeight()-12, 30, 12);
-			add(brick);
-		}
-	}
+    public void run() {
+        //int baseBricks = 14;
+        for (int i = 0; i < BRICKS_IN_BASE; i++) {
+            buildRow(i);
+        }
 
-	public int offset(int numberOfBricks){
-		int initialOffset = (getWidth()-14*30)/2;
-		return initialOffset + 30 * numberOfBricks;
-	}
+    }
+
+    public void buildRow(int rowNumber) {
+        for (int i = 0; i < BRICKS_IN_BASE; i++) {
+            add(new GRect(horizontal_offset(i), vertical_offset(rowNumber), BRICK_WIDTH, BRICK_HEIGHT));
+        }
+    }
+
+    public int horizontal_offset(int numberOfBricks) {
+        int initialOffset = (getWidth() - BRICKS_IN_BASE * BRICK_WIDTH) / 2;
+        return initialOffset + BRICK_WIDTH * numberOfBricks;
+    }
+
+    public int vertical_offset(int numberOfRows) {
+        int initialVerticalOffset = (getHeight() - BRICK_HEIGHT);
+        return initialVerticalOffset + BRICK_HEIGHT * numberOfRows;
+    }
 }
 
