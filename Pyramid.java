@@ -33,6 +33,7 @@ public class Pyramid extends GraphicsProgram {
     public void run() {
         //int baseBricks = 14;
         for (int i = 0; i < BRICKS_IN_BASE; i++) {
+            println(i);
             buildRow(i);
         }
 
