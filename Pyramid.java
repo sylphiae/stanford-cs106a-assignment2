@@ -31,7 +31,6 @@ public class Pyramid extends GraphicsProgram {
     private static final int BRICKS_IN_BASE = 14;
 
     public void run() {
-        //int baseBricks = 14;
         for (int i = 0; i < BRICKS_IN_BASE; i++) {
             buildRow(i);
         }
@@ -39,18 +38,17 @@ public class Pyramid extends GraphicsProgram {
     }
 
     public void buildRow(int rowNumber) {
-        for (int i = 0; i < BRICKS_IN_BASE-rowNumber; i++) {
-            //println(BRICKS_IN_BASE-rowNumber);
-            //println("i" + i);
-            add(new GRect(horizontalOffset(i, rowNumber) + BRICK_WIDTH * rowNumber, verticalOffset(rowNumber), BRICK_WIDTH, BRICK_HEIGHT));
+        for (int brickNumber = 0; brickNumber < BRICKS_IN_BASE-rowNumber; brickNumber++) {
+            add(new GRect(horizontalOffset(brickNumber, rowNumber) + BRICK_WIDTH * rowNumber, verticalOffset(rowNumber), BRICK_WIDTH, BRICK_HEIGHT));
         }
     }
 
-    public int horizontalOffset(int numberOfBricks, int rowNumber) {
+    public int horizontalOffset(int brickNumber, int rowNumber) {
         int initialOffset = ((getWidth() - BRICKS_IN_BASE * BRICK_WIDTH) / 2);
         int rowOffset = BRICK_WIDTH/2 * rowNumber;
-        println("horizontal offset" + (initialOffset + BRICK_WIDTH * numberOfBricks));
-        return initialOffset -rowOffset + BRICK_WIDTH * numberOfBricks;
+        //println("horizontal offset" + (initialOffset + BRICK_WIDTH * brickNumber));
+        int brickOffset = BRICK_WIDTH * brickNumber;
+        return initialOffset -rowOffset + brickOffset;
     }
 
     public int verticalOffset(int numberOfRows) {
