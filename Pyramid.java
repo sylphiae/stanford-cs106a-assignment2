@@ -39,7 +39,7 @@ public class Pyramid extends GraphicsProgram {
 
     public void buildRow(int rowNumber) {
         for (int brickNumber = 0; brickNumber < BRICKS_IN_BASE-rowNumber; brickNumber++) {
-            add(new GRect(horizontalOffset(brickNumber, rowNumber) + BRICK_WIDTH * rowNumber, verticalOffset(rowNumber), BRICK_WIDTH, BRICK_HEIGHT));
+            add(new GRect(horizontalOffset(brickNumber, rowNumber), verticalOffset(rowNumber), BRICK_WIDTH, BRICK_HEIGHT));
         }
     }
 
@@ -48,12 +48,12 @@ public class Pyramid extends GraphicsProgram {
         int rowOffset = BRICK_WIDTH/2 * rowNumber;
         //println("horizontal offset" + (initialOffset + BRICK_WIDTH * brickNumber));
         int brickOffset = BRICK_WIDTH * brickNumber;
-        return initialOffset -rowOffset + brickOffset;
+        return initialOffset + rowOffset + brickOffset;
     }
 
     public int verticalOffset(int numberOfRows) {
         int initialVerticalOffset = (getHeight() - BRICK_HEIGHT);
-        println("vertical offset" + (initialVerticalOffset + BRICK_HEIGHT * numberOfRows));
+        //println("vertical offset" + (initialVerticalOffset + BRICK_HEIGHT * numberOfRows));
         return initialVerticalOffset - BRICK_HEIGHT * numberOfRows;
     }
 }
