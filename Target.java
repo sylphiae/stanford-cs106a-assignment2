@@ -8,7 +8,6 @@
 
 import acm.graphics.*;
 import acm.program.*;
-
 import java.awt.*;
 
 public class Target extends GraphicsProgram {
@@ -21,8 +20,7 @@ public class Target extends GraphicsProgram {
 
 
     private void drawCircle(double diameter, Color fillColor) {
-        GOval circle = (buildCircle(diameter));
-        fillCircle(circle, fillColor);
+        GOval circle = buildCircle(diameter, fillColor);
         add(circle);
     }
 
@@ -34,11 +32,13 @@ public class Target extends GraphicsProgram {
     }
 
 
-    private GOval buildCircle(double diameter) {
+    private GOval buildCircle(double diameter, Color fillColor) {
         double radius = diameter / 2;
         int horizontalMidpoint = getWidth() / 2;
         int verticalMidpoint = getHeight() / 2;
-        return new GOval(horizontalMidpoint - radius, verticalMidpoint - radius, diameter, diameter);
+        GOval circle = new GOval(horizontalMidpoint - radius, verticalMidpoint - radius, diameter, diameter);
+        fillCircle(circle, fillColor);
+        return circle;
     }
 
 
